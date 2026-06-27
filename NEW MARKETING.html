@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Eraj Rashid — Marketing Account Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0A0E1A;
+    --gold: #F5C518;
+    --gold-dim: #C9A214;
+    --white: #F8F5F0;
+    --slate: #8892A4;
+    --card-bg: #121828;
+    --border: rgba(245,197,24,0.18);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: linear-gradient(to bottom, rgba(10,14,26,0.95) 0%, transparent 100%);
+    backdrop-filter: blur(2px);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 900;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+  }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a {
+    color: var(--slate); text-decoration: none;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-slash {
+    position: absolute;
+    top: -10%; right: 12%;
+    width: 3px; height: 130%;
+    background: linear-gradient(to bottom, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+    transform: rotate(12deg);
+    opacity: 0.35;
+  }
+  .hero-slash-2 {
+    position: absolute;
+    top: -10%; right: 18%;
+    width: 1px; height: 130%;
+    background: linear-gradient(to bottom, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+    transform: rotate(12deg);
+    opacity: 0.15;
+  }
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 40px; height: 1px; background: var(--gold);
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(56px, 9vw, 120px);
+    font-weight: 900; line-height: 0.92;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+  }
+  .hero-name em {
+    font-style: italic; color: var(--gold);
+    display: block;
+  }
+  .hero-desc {
+    max-width: 480px;
+    font-size: 15px; font-weight: 300;
+    color: var(--slate); line-height: 1.8;
+    margin-bottom: 48px;
+  }
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 14px 32px; font-size: 12px;
+    font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none;
+    border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+  .btn-primary:hover { background: #FFD740; transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid var(--border); color: var(--white);
+    padding: 14px 32px; font-size: 12px;
+    font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    position: absolute; right: 48px; bottom: 80px;
+    display: flex; flex-direction: column; gap: 24px; text-align: right;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px; font-weight: 900; color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate);
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 100px 48px; }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .section-tag::after {
+    content: ''; display: block;
+    width: 60px; height: 1px; background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 900; line-height: 1.05;
+    margin-bottom: 60px;
+  }
+  .section-title span { color: var(--gold); font-style: italic; }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+  }
+  .about-photo-frame {
+    position: relative;
+  }
+  .photo-upload-zone {
+    width: 100%; aspect-ratio: 3/4;
+    border: 1.5px dashed var(--border);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 12px; cursor: pointer;
+    transition: border-color 0.2s;
+    background: var(--card-bg);
+    position: relative; overflow: hidden;
+  }
+  .photo-upload-zone:hover { border-color: var(--gold); }
+  .photo-upload-zone input[type=file] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer;
+  }
+  .photo-upload-zone img.preview {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .upload-icon { font-size: 36px; opacity: 0.3; }
+  .upload-text {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate);
+    text-align: center; pointer-events: none;
+  }
+  .photo-accent {
+    position: absolute; bottom: -12px; right: -12px;
+    width: 60px; height: 60px;
+    background: var(--gold);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 40% 100%, 0 60%);
+  }
+  .about-text p {
+    color: var(--slate); line-height: 1.9; margin-bottom: 20px;
+  }
+  .about-highlights {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px;
+  }
+  .highlight-item {
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+  }
+  .highlight-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700; color: var(--gold);
+  }
+  .highlight-key {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.08em; color: var(--slate); margin-top: 2px;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--card-bg); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .service-card {
+    padding: 40px 32px;
+    background: var(--navy);
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+  .service-card:hover { background: #111828; }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 0; height: 3px;
+    background: var(--gold);
+    transition: width 0.4s;
+  }
+  .service-card:hover::before { width: 100%; }
+  .service-num {
+    font-size: 11px; font-weight: 700;
+    color: var(--gold); opacity: 0.5;
+    letter-spacing: 0.15em; margin-bottom: 20px;
+  }
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    margin-bottom: 14px; line-height: 1.2;
+  }
+  .service-desc {
+    color: var(--slate); font-size: 13px; line-height: 1.8;
+  }
+  .service-tools {
+    margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .tool-badge {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--border);
+    padding: 4px 10px;
+  }
+
+  /* ── WORK GALLERY ── */
+  .gallery-label {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 40px;
+  }
+  .gallery-scroll {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .work-card {
+    position: relative; background: var(--card-bg);
+    overflow: hidden;
+  }
+  .work-photo-zone {
+    width: 100%; aspect-ratio: 4/3;
+    border: 1.5px dashed var(--border);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 10px; cursor: pointer; position: relative; overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .work-photo-zone:hover { border-color: var(--gold); }
+  .work-photo-zone input[type=file] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 2;
+  }
+  .work-photo-zone img.preview {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover; z-index: 1;
+  }
+  .work-info { padding: 20px 24px; }
+  .work-category {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .work-title-card {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700; margin-bottom: 8px;
+  }
+  .work-desc-card { font-size: 12px; color: var(--slate); line-height: 1.7; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--card-bg); }
+  .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .skill-row { margin-bottom: 28px; }
+  .skill-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .skill-name { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; }
+  .skill-pct { font-size: 12px; font-weight: 700; color: var(--gold); }
+  .skill-bar {
+    height: 2px; background: rgba(255,255,255,0.08); position: relative;
+  }
+  .skill-fill {
+    height: 100%; background: var(--gold);
+    width: 0;
+    transition: width 1.2s cubic-bezier(.4,0,.2,1);
+  }
+  .certs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .cert-item {
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    background: var(--navy);
+  }
+  .cert-name { font-size: 12px; font-weight: 600; margin-bottom: 3px; }
+  .cert-cat { font-size: 10px; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ── EXPERIENCE ── */
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .timeline-item { position: relative; margin-bottom: 56px; }
+  .timeline-dot {
+    position: absolute; left: -46px; top: 6px;
+    width: 12px; height: 12px;
+    background: var(--gold);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
+  .timeline-period {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .timeline-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700; margin-bottom: 4px;
+  }
+  .timeline-company {
+    font-size: 12px; font-weight: 500; color: var(--slate); margin-bottom: 16px;
+  }
+  .timeline-points { list-style: none; padding: 0; }
+  .timeline-points li {
+    font-size: 13px; color: var(--slate); line-height: 1.8;
+    padding-left: 18px; position: relative; margin-bottom: 6px;
+  }
+  .timeline-points li::before {
+    content: '—'; position: absolute; left: 0; color: var(--gold); opacity: 0.6;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--navy);
+    text-align: center; padding: 120px 48px;
+    position: relative; overflow: hidden;
+  }
+  #contact::before {
+    content: 'CONNECT';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(80px, 18vw, 240px); font-weight: 900;
+    color: rgba(245,197,24,0.03); white-space: nowrap;
+    pointer-events: none;
+  }
+  .contact-inner { position: relative; z-index: 1; }
+  .contact-links { display: flex; justify-content: center; gap: 48px; margin-top: 48px; flex-wrap: wrap; }
+  .contact-link {
+    text-decoration: none; text-align: center;
+  }
+  .contact-link-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+  }
+  .contact-link-val {
+    font-size: 15px; color: var(--white);
+    transition: color 0.2s;
+  }
+  .contact-link:hover .contact-link-val { color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--card-bg);
+    padding: 28px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer span { font-size: 11px; color: var(--slate); letter-spacing: 0.06em; }
+  .footer-gold { color: var(--gold); }
+
+  /* ── PHOTO UPLOAD LABEL ── */
+  .upload-hint {
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--slate); text-align: center; pointer-events: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    section { padding: 72px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-stats { position: static; flex-direction: row; margin-top: 48px; gap: 40px; text-align: left; }
+    .about-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .gallery-scroll { grid-template-columns: 1fr; }
+    .skills-layout { grid-template-columns: 1fr; gap: 40px; }
+    .certs-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ER.</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-slash"></div>
+  <div class="hero-slash-2"></div>
+  <div class="hero-eyebrow">Marketing Account Manager · Kuwait</div>
+  <h1 class="hero-name">
+    Eraj<br>
+    <em>Rashid.</em>
+  </h1>
+  <p class="hero-desc">
+    3+ years building bold brand identities and multi-platform campaigns across Instagram, TikTok, Snapchat & Facebook — turning audiences into loyal communities.
+  </p>
+  <div class="hero-cta">
+    <a href="#work" class="btn-primary">View My Work</a>
+    <a href="#contact" class="btn-outline">Get In Touch</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">3+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div>
+      <div class="stat-num">4</div>
+      <div class="stat-label">Platforms Mastered</div>
+    </div>
+    <div>
+      <div class="stat-num">92%</div>
+      <div class="stat-label">Social Media Score</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">About Me</div>
+  <div class="about-grid">
+    <div class="about-photo-frame">
+      <label class="photo-upload-zone" style="cursor:pointer;">
+        <input type="file" accept="image/*" onchange="previewPhoto(this)">
+        <div class="upload-icon">🖼</div>
+        <div class="upload-text">Click to upload<br>your profile photo</div>
+      </label>
+      <div class="photo-accent"></div>
+    </div>
+    <div class="about-text">
+      <div class="section-tag">The Story</div>
+      <h2 class="section-title" style="margin-bottom: 24px;">
+        Turning <span>ideas</span> into impact.
+      </h2>
+      <p>I'm a results-driven Marketing Account Manager based in Kuwait, passionate about crafting digital narratives that make brands impossible to ignore. From managing luxury lounge identities to coordinating large-scale events, I bring creative precision to every campaign.</p>
+      <p>My approach blends strategy with storytelling — building brand identities rooted in culture, design, and data. Whether it's Arabic calligraphy for a premium client or a viral TikTok for a fast-growing brand, I make it land.</p>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <div class="highlight-val">3</div>
+          <div class="highlight-key">IG Accounts Managed</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-val">KW</div>
+          <div class="highlight-key">Market Expertise</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-val">3+</div>
+          <div class="highlight-key">Languages</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-val">15+</div>
+          <div class="highlight-key">Certifications</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag">What I Do</div>
+  <h2 class="section-title">Services that <span>deliver.</span></h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-title">Social Media Management</div>
+      <div class="service-desc">End-to-end content strategy, scheduling, community management, and performance reporting across all major platforms in the Kuwaiti market.</div>
+      <div class="service-tools">
+        <span class="tool-badge">Instagram</span>
+        <span class="tool-badge">TikTok</span>
+        <span class="tool-badge">Snapchat</span>
+        <span class="tool-badge">Planoly</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title">Influencer Marketing</div>
+      <div class="service-desc">Identifying, negotiating, and managing influencer partnerships that drive measurable ROI — from micro creators to premium bloggers.</div>
+      <div class="service-tools">
+        <span class="tool-badge">Outreach</span>
+        <span class="tool-badge">Negotiation</span>
+        <span class="tool-badge">ROI Tracking</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title">Paid Advertising</div>
+      <div class="service-desc">Meta and Google Ads campaign setup, optimization, budget management, and detailed analytics reporting for maximum performance.</div>
+      <div class="service-tools">
+        <span class="tool-badge">Meta Ads</span>
+        <span class="tool-badge">Google Ads</span>
+        <span class="tool-badge">KPI Reports</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-title">Brand Identity</div>
+      <div class="service-desc">Creating premium visual identities — from Arabic calligraphy to minimalist design systems — that make brands stand out in crowded markets.</div>
+      <div class="service-tools">
+        <span class="tool-badge">Canva</span>
+        <span class="tool-badge">Photo Editing</span>
+        <span class="tool-badge">Video Editing</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-title">Content Creation</div>
+      <div class="service-desc">Producing scroll-stopping photo and video content tailored to each platform's culture, optimized for engagement and brand consistency.</div>
+      <div class="service-tools">
+        <span class="tool-badge">Photography</span>
+        <span class="tool-badge">Video</span>
+        <span class="tool-badge">Copywriting</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-title">Event Coordination</div>
+      <div class="service-desc">Planning and executing corporate and private events across Kuwait, managing teams, logistics, design materials, and client relationships.</div>
+      <div class="service-tools">
+        <span class="tool-badge">Coordination</span>
+        <span class="tool-badge">PR</span>
+        <span class="tool-badge">Hospitality</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK GALLERY -->
+<section id="work">
+  <div class="gallery-label">
+    <div>
+      <div class="section-tag">Portfolio</div>
+      <h2 class="section-title" style="margin-bottom: 0;">Selected <span>work.</span></h2>
+    </div>
+    <p style="color:var(--slate); font-size: 12px; max-width: 220px; text-align: right; line-height: 1.7;">Click any card to upload<br>your own project photos.</p>
+  </div>
+  <div class="gallery-scroll">
+
+    <div class="work-card">
+      <label class="work-photo-zone" style="cursor:pointer;">
+        <input type="file" accept="image/*" onchange="previewPhoto(this)">
+        <div class="upload-icon">📸</div>
+        <div class="upload-hint">Upload project photo</div>
+      </label>
+      <div class="work-info">
+        <div class="work-category">Brand Identity</div>
+        <div class="work-title-card">Luxury Lounge — Visual Identity</div>
+        <div class="work-desc-card">Premium brand system using Arabic calligraphy and minimalist design for digital and event materials.</div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <label class="work-photo-zone" style="cursor:pointer;">
+        <input type="file" accept="image/*" onchange="previewPhoto(this)">
+        <div class="upload-icon">📸</div>
+        <div class="upload-hint">Upload project photo</div>
+      </label>
+      <div class="work-info">
+        <div class="work-category">Influencer Campaign</div>
+        <div class="work-title-card">Blogger Partnership — ROI Campaign</div>
+        <div class="work-desc-card">Negotiated and managed influencer partnerships to maximize reach and measurable return on investment.</div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <label class="work-photo-zone" style="cursor:pointer;">
+        <input type="file" accept="image/*" onchange="previewPhoto(this)">
+        <div class="upload-icon">📸</div>
+        <div class="upload-hint">Upload project photo</div>
+      </label>
+      <div class="work-info">
+        <div class="work-category">Social Media</div>
+        <div class="work-title-card">Multi-Platform Content Strategy</div>
+        <div class="work-desc-card">Managed content across 3 Instagram accounts, TikTok, and Facebook with full end-to-end oversight.</div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <label class="work-photo-zone" style="cursor:pointer;">
+        <input type="file" accept="image/*" onchange="previewPhoto(this)">
+        <div class="upload-icon">📸</div>
+        <div class="upload-hint">Upload project photo</div>
+      </label>
+      <div class="work-info">
+        <div class="work-category">Event Design</div>
+        <div class="work-title-card">Corporate Event — Kuwait City</div>
+        <div class="work-desc-card">Coordinated design, content, and advertising teams for large-scale corporate events across Kuwait.</div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <label class="work-photo-zone" style="cursor:pointer;">
+        <input type="file" accept="image/*" onchange="previewPhoto(this)">
+        <div class="upload-icon">📸</div>
+        <div class="upload-hint">Upload project photo</div>
+      </label>
+      <div class="work-info">
+        <div class="work-category">Paid Ads</div>
+        <div class="work-title-card">Meta Ads — Performance Campaign</div>
+        <div class="work-desc-card">Full campaign setup, budget coordination, KPI monitoring, and client-facing digital reports.</div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <label class="work-photo-zone" style="cursor:pointer;">
+        <input type="file" accept="image/*" onchange="previewPhoto(this)">
+        <div class="upload-icon">📸</div>
+        <div class="upload-hint">Upload project photo</div>
+      </label>
+      <div class="work-info">
+        <div class="work-category">Content Creation</div>
+        <div class="work-title-card">Brand Growth — CELEBRATE</div>
+        <div class="work-desc-card">Content strategy, customer engagement, and influencer outreach to accelerate brand reach and community growth.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag">Expertise</div>
+  <h2 class="section-title">Skills & <span>credentials.</span></h2>
+  <div class="skills-layout">
+    <div id="skill-bars">
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Social Media Management</span><span class="skill-pct">92%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="92"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Influencer Marketing</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="90"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Brand Identity Development</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="90"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Digital Marketing Strategy</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="88"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Content Creation & Copywriting</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="88"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Event Coordination</span><span class="skill-pct">87%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="87"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Client Relationship Mgmt</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="85"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Photo & Video Editing</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="85"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">PR & Negotiation</span><span class="skill-pct">83%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="83"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Campaign Performance & ROI</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="82"></div></div></div>
+      <div class="skill-row"><div class="skill-header"><span class="skill-name">Budget Coordination</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="80"></div></div></div>
+    </div>
+    <div>
+      <h3 style="font-family:'Playfair Display',serif; font-size: 22px; margin-bottom: 24px;">Certifications</h3>
+      <div class="certs-grid">
+        <div class="cert-item"><div class="cert-name">Social Media Marketing</div><div class="cert-cat">Digital Marketing</div></div>
+        <div class="cert-item"><div class="cert-name">ChatGPT for Project Mgmt</div><div class="cert-cat">AI & Productivity</div></div>
+        <div class="cert-item"><div class="cert-name">AWS Cloud Practitioner</div><div class="cert-cat">Cloud Computing</div></div>
+        <div class="cert-item"><div class="cert-name">Azure Fundamentals</div><div class="cert-cat">Cloud Computing</div></div>
+        <div class="cert-item"><div class="cert-name">Design Thinking</div><div class="cert-cat">Creative Strategy</div></div>
+        <div class="cert-item"><div class="cert-name">Intro to Responsible AI</div><div class="cert-cat">AI Ethics</div></div>
+        <div class="cert-item"><div class="cert-name">ChatGPT for Cybersecurity</div><div class="cert-cat">AI & Security</div></div>
+        <div class="cert-item"><div class="cert-name">IT for Business Success</div><div class="cert-cat">Business Tech</div></div>
+        <div class="cert-item"><div class="cert-name">AI Framework & Models</div><div class="cert-cat">Artificial Intelligence</div></div>
+        <div class="cert-item"><div class="cert-name">Basics in Machine Learning</div><div class="cert-cat">Data & AI</div></div>
+        <div class="cert-item"><div class="cert-name">Intro to Cybersecurity</div><div class="cert-cat">Tech & Security</div></div>
+        <div class="cert-item"><div class="cert-name">Creative Strategy</div><div class="cert-cat">Marketing</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-tag">Experience</div>
+  <h2 class="section-title">Career <span>journey.</span></h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Aug 2024 – Present</div>
+      <div class="timeline-role">Social Media Manager & Event Coordinator</div>
+      <div class="timeline-company">Luxury Lounge, Kuwait City</div>
+      <ul class="timeline-points">
+        <li>Managed 3 Instagram accounts, TikTok & Facebook with end-to-end content strategy and client relationships.</li>
+        <li>Executed influencer marketing campaigns, negotiating partnerships with bloggers and content creators to maximize ROI.</li>
+        <li>Developed premium brand identity using Arabic calligraphy and minimalist design for digital and event materials.</li>
+        <li>Coordinated design, content, and advertising teams for corporate and private events across Kuwait.</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Nov 2023 – Jul 2024</div>
+      <div class="timeline-role">Social Media Officer</div>
+      <div class="timeline-company">CELEBRATE</div>
+      <ul class="timeline-points">
+        <li>Managed content strategy, customer engagement, and influencer outreach to grow brand reach.</li>
+        <li>Contributed to marketing brainstorming sessions, generating campaign and branding ideas.</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Dec 2023 – Jul 2024</div>
+      <div class="timeline-role">Event Assistant</div>
+      <div class="timeline-company">NUQRA LAND</div>
+      <ul class="timeline-points">
+        <li>Led on-site teams for event organization, guest supervision, and high-quality hospitality.</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Apr 2022 – Oct 2023</div>
+      <div class="timeline-role">Teacher & Coordinator</div>
+      <div class="timeline-company">Smurfs Academy</div>
+      <ul class="timeline-points">
+        <li>Designed lesson plans, coordinated events, and handled receptionist duties.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-tag" style="justify-content: center;">Let's Work Together</div>
+    <h2 class="section-title" style="font-size: clamp(36px, 6vw, 72px); margin-bottom: 16px;">
+      Ready to build something <span>great?</span>
+    </h2>
+    <p style="color: var(--slate); max-width: 440px; margin: 0 auto; font-size: 14px; line-height: 1.9;">
+      Whether you're launching a brand, scaling a campaign, or planning an event — I'm here to make it happen.
+    </p>
+    <div class="contact-links">
+      <a href="tel:+96551035105" class="contact-link">
+        <div class="contact-link-label">Phone</div>
+        <div class="contact-link-val">+965 5103 5105</div>
+      </a>
+      <a href="mailto:erajrashid29@gmail.com" class="contact-link">
+        <div class="contact-link-label">Email</div>
+        <div class="contact-link-val">erajrashid29@gmail.com</div>
+      </a>
+      <div class="contact-link">
+        <div class="contact-link-label">Location</div>
+        <div class="contact-link-val">Khaitan, Kuwait</div>
+      </div>
+    </div>
+    <div style="margin-top: 56px;">
+      <a href="mailto:erajrashid29@gmail.com" class="btn-primary">Send Me A Message</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 <span class="footer-gold">Eraj Rashid</span>. All rights reserved.</span>
+  <span>Marketing Account Manager · Kuwait</span>
+</footer>
+
+<script>
+  // Photo preview
+  function previewPhoto(input) {
+    if (!input.files || !input.files[0]) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      const zone = input.parentElement;
+      // Remove old preview if any
+      const old = zone.querySelector('img.preview');
+      if (old) old.remove();
+      const img = document.createElement('img');
+      img.className = 'preview';
+      img.src = e.target.result;
+      zone.appendChild(img);
+      // Hide placeholder content
+      zone.querySelectorAll('.upload-icon, .upload-text, .upload-hint').forEach(el => el.style.display = 'none');
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+
+  // Animate skill bars on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.style.width = bar.getAttribute('data-pct') + '%';
+        });
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  const skillSection = document.getElementById('skill-bars');
+  if (skillSection) observer.observe(skillSection);
+</script>
+</body>
+</html>
